@@ -1,0 +1,48 @@
+cd D:  --> change the directory to D.
+
+
+
+GIT:
+
+git config --global user.name Daddy
+git config --global user.mail alludaddy304@gmail.com
+git init  --> git initialisation
+git status  --> status of the files. (verify whether any changes are made or not)
+*git status -s  -->  Green Alphabet represents Staging area, Red Alphabet represents working area.
+git add file.xyz   --> adding file.xyz to staging area.
+git add .   --> adding all files in the directory to staging area.
+git commit -m "any title for commit"  --> save the changes.
+git checkout filename.xyz  -->  Retrive back the changes made in the file by comparing with last commit.
+git checkout -f  -->  Retrive back all changes made in all file by comparing with last commit.
+git log  --> shows the logs such as commits.
+git log -p -n  ---> shows last n logs.
+git log -p -4  ---> shows last 4 logs.
+git diff  --> it compares working tree with staging area.
+git diff -- staged  --> It compares last commit with staging area.
+ls  --> list of files
+ls -la  --> list of files including hidden files
+touch filename.xyz  --> add new blank filename.xyz file.
+git rm --cached filename.xyz --> remove from staging area, but not deleted from disk.
+git rm filename.xyz  --> remove permenantly.
+touch .gitignore  --> To create gitignore file.  (put this *.log in gitignore, then it ignore every log files.)
+
+GIT BRANCH:
+
+git branch branchname  --> create a new branch branchname
+git branch  --> displays all branches and highlight current branch
+git checkout branchname  -->  switched to branchname
+git checkout -b branchname  -->  switched to new branchname
+git remote -v --> fetch & push - url's
+
+
+	
+
+ 
+	
+
+
+
+
+if you made any changes in file and type: git status, it shows the modified files.
+if you type: add .  then all files are added to staging area. if we type: git status, it diplays no changes are made.
+Insert the filename.xyz in the gitignore, then git will ignore the changes in filename.xyz.
