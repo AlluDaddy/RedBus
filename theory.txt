@@ -46,3 +46,24 @@ git remote -v --> fetch & push - url's
 if you made any changes in file and type: git status, it shows the modified files.
 if you type: add .  then all files are added to staging area. if we type: git status, it diplays no changes are made.
 Insert the filename.xyz in the gitignore, then git will ignore the changes in filename.xyz.
+
+
+GIT CLONE: commands (don't enter $ symbol)
+
+$ ssh-keygen
+$ click enter for default name id_rsa
+  click enter for no pass
+  click enter
+$ cat path-of-file/id_rsa
+copy path
+GO to settings in github
+go to ssh keys and GPG key
+Add ssh key
+click submit
+
+
+$ git clone -b branchname 'git@github.com:gitName/reponame.git'
+
+
+
+
