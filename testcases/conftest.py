@@ -69,7 +69,7 @@ def pytest_runtest_makereport(item, call):
             from os import getcwd
             report_directory = getcwd()
             file_name = report.nodeid.replace("::", "_")[27:] + ".png"
-            destination_file = os.path.join(report_directory, "reports.html")
+            destination_file = os.path.join(report_directory, file_name)
             driver.save_screenshot(destination_file)
             if file_name:
                 htm = '<div><img src="%s" alt="screenshot" style="width:300px; height:"400px" onclick="window.open(' \
