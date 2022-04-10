@@ -67,6 +67,7 @@ def pytest_runtest_makereport(item, call):
         xfail = hasattr(report, "wasxfail")
         if (report.skipped and xfail) or (report.failed and not xfail):
             from os import getcwd
+#             report_directory = os.path.dirname(item.config.option.htmlpath)
             report_directory = getcwd()
             file_name = report.nodeid.replace("::", "_")[27:] + ".png"
             destination_file = os.path.join(report_directory, file_name)
