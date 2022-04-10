@@ -66,9 +66,10 @@ def pytest_runtest_makereport(item, call):
         extra.append(pytest_html.extras.url("https://www.redbus.com"))
         xfail = hasattr(report, "wasxfail")
         if (report.skipped and xfail) or (report.failed and not xfail):
-            report_directory = os.path.dirname(item.config.option.htmlpath)
+            from os import getcwd
+            report_directory = getcwd
             file_name = report.nodeid.replace("::", "_")[27:] + ".png"
-            destination_file = os.path.join(report_directory, file_name)
+            destination_file = os.path.join(report_directory, "reports.html")
             driver.save_screenshot(destination_file)
             if file_name:
                 htm = '<div><img src="%s" alt="screenshot" style="width:300px; height:"400px" onclick="window.open(' \
@@ -81,3 +82,4 @@ def pytest_runtest_makereport(item, call):
     c = c.replace("_", " ")
     report.test_name = c
 
+    
