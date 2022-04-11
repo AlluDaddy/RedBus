@@ -1,7 +1,8 @@
 from base.base import *
 from selenium.webdriver.common.by import By
 from base.base import BaseDriver
-import pyautogui
+# import pyautogui
+from selenium.webdriver.common.keys import Keys
 from utilities.utils import *
 
 
@@ -30,12 +31,14 @@ class Second(BaseDriver):
         source.send_keys(from_)
         sleep_time(self, 1)
         self.log.info("Source location is entered")
-        pyautogui.press("enter")
+        source.send_keys(Keys.ENTER)
+        # pyautogui.press("enter")
         dest = self.driver.find_element(By.ID, "dest")
         dest.send_keys(to_)
         sleep_time(self, 3)
         self.log.info("Destination location is entered.")
-        pyautogui.press("enter")
+        dest.send_keys(Keys.ENTER)
+        # pyautogui.press("enter")
         dot = self.driver.find_element(By.ID, "onward_cal")
         dot.click()
         sleep_time(self, 0.5)
