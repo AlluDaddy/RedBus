@@ -1,6 +1,10 @@
 cd D:  --> change the directory to D.
 
 
+env activate:
+
+source env/scripts/activate
+
 
 GIT:
 
