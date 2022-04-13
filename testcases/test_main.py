@@ -1,11 +1,16 @@
+from nntplib import GroupInfo
 import pytest
 from testcases import Secondfile
 from base.base import *
 from utilities.utils import *
+from ddt import ddt, data, file_data, unpack
+import softest
 
+
+
+@ddt
 @pytest.mark.usefixtures("setup")
-class TestMain:
-
+class TestMain(softest.TestCase):
     log = Utils.custom_logger()
 
     @pytest.fixture(autouse=True)
@@ -13,34 +18,36 @@ class TestMain:
         self.sf = Secondfile.Second(self.driver)
         self.ut = Utils()
 
-    def test_first(self):
+    @data(*Utils.read_data_from_excel("C:\\Users\\APraveen\\PycharmProjects\\mainproj\\RedBus\\testdata\\travel.xlsx",
+                                      "Sheet1"))
+    @unpack
+    
+
+
+    
+    def test_first(self, going_from, going_to, data_of_journey):
         "Launches the pages and pass the arguments From , Destination and Date of Journey."
-        self.sf.from_to_date("Bangalore", "Hyderabad", "30")
+        # self.sf.from_to_date(going_from, going_to, data_of_journey)
+        self.sf.from_to_date(going_from, going_to, str(data_of_journey))
         # print("Data is inserted")
         sleep_time(self, 2)
-
-    def test_search(self):
         "It handles the search button and Advertisements."
         self.sf.search_button()
         # print("searching")
         sleep_time(self, 5)
+
         self.driver.refresh()
         # print("page is refresh")
         sleep_time(self, 5)
-        # try:
-        self.sf.add_close_btn()
+        try:
+            self.sf.add_close_btn()
         # print("Advertisement is close")
-        # except:
-        #     pass
+        except:
+            pass
 
-    def test_page_scroll(self):
-        # assert False
         "It Scrolls the page to End of the Page."
         self.sf.page_scroll()
-        # print("page is scrolled")
 
-    def test_seat_selection(self):
         "Selected the bus and select the deck."
         self.sf.seats_button()
-        # print("Seats are selecting")
         sleep_time(self, 5)

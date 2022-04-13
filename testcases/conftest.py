@@ -8,7 +8,7 @@ import pytest
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(autouse = True)
 def setup(request):
     global driver
     driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
@@ -19,6 +19,19 @@ def setup(request):
     request.cls.wait = wait
     yield
     driver.close()
+
+
+# def webdri():
+#     global driver
+#     driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+#     wait = WebDriverWait(driver, 10)
+#     driver.get("https://www.redbus.in/")
+#     driver.maximize_window()
+#     # request.cls.driver = driver
+#     # request.cls.wait = wait
+#     yield
+#     driver.close()
+
 
 
 def pytest_html_report_title(report):
@@ -46,13 +59,13 @@ def pytest_html_results_table_header(cells):
     cells.pop()
 
 
-def pytest_html_results_table_row(report, cells):
-    del cells[1]
-    cells.insert(0, html.td(datetime.utcnow(), class_='col-time'))
-    # cells.insert(1, html.td(report.tag))
-    cells.insert(2, html.td(report.test_name))
-    cells.insert(3, html.td(report.test_description))
-    # cells.pop()
+# def pytest_html_results_table_row(report, cells):
+#     del cells[1]
+#     cells.insert(0, html.td(datetime.utcnow(), class_='col-time'))
+#     # cells.insert(1, html.td(report.tag))
+#     cells.insert(2, html.td(report.test_name))
+#     cells.insert(3, html.td(report.test_description))
+#     # cells.pop()
 
 
 @pytest.hookimpl(hookwrapper=True)

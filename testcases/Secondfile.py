@@ -4,6 +4,8 @@ from base.base import BaseDriver
 # import pyautogui
 from selenium.webdriver.common.keys import Keys
 from utilities.utils import *
+# from RedBus.base.base import sleep_time
+import pyautogui
 
 
 class Second(BaseDriver):
@@ -32,13 +34,11 @@ class Second(BaseDriver):
         sleep_time(self, 1)
         self.log.info("Source location is entered")
         source.send_keys(Keys.ENTER)
-        # pyautogui.press("enter")
         dest = self.driver.find_element(By.ID, "dest")
         dest.send_keys(to_)
         sleep_time(self, 3)
         self.log.info("Destination location is entered.")
         dest.send_keys(Keys.ENTER)
-        # pyautogui.press("enter")
         dot = self.driver.find_element(By.ID, "onward_cal")
         dot.click()
         sleep_time(self, 0.5)
@@ -48,9 +48,12 @@ class Second(BaseDriver):
         date_in_dot.click()
         self.log.info("Date of journey is selected.")
 
+
     def search_button(self):
-        self.wait_until_element_is_clickable(By.ID, SEARCH_BUTTON).click()
+        s_b = self.wait_until_element_is_clickable(By.ID, SEARCH_BUTTON)
+        self.driver.execute_script("arguments[0].click();", s_b)
         self.log.warning("search button is clicked.")
+
 
     def seats_button(self):
         seat_button = self.wait_presence_elements(By.XPATH, SEAT_BUTTON)
