@@ -18,7 +18,7 @@ class TestMain(softest.TestCase):
         self.sf = Secondfile.Second(self.driver)
         self.ut = Utils()
 
-    @data(*Utils.read_data_from_excel("C:\\Users\\APraveen\\PycharmProjects\\mainproj\\RedBus\\testdata\\travel.xlsx",
+    @data(*Utils.read_data_from_excel("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Red_bus\\testdata\\travel.xlsx",
                                       "Sheet1"))
     @unpack
     
