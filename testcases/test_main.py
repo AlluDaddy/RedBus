@@ -18,8 +18,7 @@ class TestMain(softest.TestCase):
         self.sf = Secondfile.Second(self.driver)
         self.ut = Utils()
 
-    @data(*Utils.read_data_from_excel(os.path.join("testdata\\travel.xlsx",
-                                      "Sheet1")))
+    @data(*Utils.read_data_from_excel(os.path.join("testdata\\travel.xlsx","Sheet1")))
     @unpack
     
 
