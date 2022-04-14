@@ -5,7 +5,7 @@ from base.base import *
 from utilities.utils import *
 from ddt import ddt, data, file_data, unpack
 import softest
-
+import os
 
 
 @ddt
@@ -18,8 +18,8 @@ class TestMain(softest.TestCase):
         self.sf = Secondfile.Second(self.driver)
         self.ut = Utils()
 
-    @data(*Utils.read_data_from_excel("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Red_bus\\testdata\\travel.xlsx",
-                                      "Sheet1"))
+    @data(*Utils.read_data_from_excel(os.path.join("testdata\\travel.xlsx",
+                                      "Sheet1")))
     @unpack
     
 
